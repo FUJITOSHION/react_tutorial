@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
 
 type SquareProps = {
     value: number
+    onClick: (i: number) => void
 }
 
-export const Square:React.FC<SquareProps> = ({value}:SquareProps) => {
-    const [values, setValues] = useState<number | string>(value)
+export const Square:React.VFC<SquareProps> = ({value, onClick}:SquareProps) => {
     const handleButton = () => {
-        // alert('click')
-        setValues('X')
+        onClick(value)
     }
-    return (<button className="square" onClick={handleButton}>{values}</button>)
+    return (<button className="square" onClick={() => handleButton()}>{value}</button>)
 }
